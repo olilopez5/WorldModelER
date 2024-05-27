@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.project.modelER.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,12 +1,12 @@
-package com.example.demo.service;
+package com.project.modelER.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Supuesto;
-import com.example.demo.repository.SupuestoRepository;
+import com.project.modelER.entity.Supuesto;
+import com.project.modelER.repository.SupuestoRepository;
 
 
 @Service

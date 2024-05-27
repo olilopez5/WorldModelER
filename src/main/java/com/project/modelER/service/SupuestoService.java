@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.project.modelER.service;
 
 import java.util.List;
 
-import com.example.demo.entity.Supuesto;
+import com.project.modelER.entity.Supuesto;
 
 public interface SupuestoService {
 List<Supuesto> findAllSupuestos();
