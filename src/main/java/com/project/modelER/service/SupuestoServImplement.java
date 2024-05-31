@@ -23,4 +23,22 @@ public class SupuestoServImplement implements SupuestoService {
 		return supuestoRepository.findAll();
 	}
 
+	@Override
+	public Supuesto saveSupuesto(Supuesto supuesto) {
+		
+		return supuestoRepository.save(supuesto);
+	}
+
+	@Override
+	public Supuesto updateSupuesto(Long id, Supuesto supuesto) {
+		
+		return null;
+	}
+
+	@Override
+	public void deleteSupuesto(Long id) {
+		supuestoRepository.deleteById(id);
+		
+	}
+
 }
