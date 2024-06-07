@@ -8,13 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
+@Table (name="MODELOS-R")
 
-@Table(name="SUPUESTOS")
-
-public class Supuesto {
-
+public class ModeloRelacional {
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 	
 	@Column
@@ -23,8 +21,8 @@ public class Supuesto {
 	@Column
 	private Integer level;
 	
-	@Column(length=5000)
-	private String text;
+	@Column
+	private String image;
 
 	public Long getId() {
 		return id;
@@ -50,14 +48,12 @@ public class Supuesto {
 		this.level = level;
 	}
 
-	public String getText() {
-		return text;
+	public String getImagen() {
+		return image;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setImagen(String image) {
+		this.image = image;
 	}
-	
 	
 }
-

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>World ModelER</title>
+</head>
+<body>
+	<h1>MODELS PROJECT</h1>
+</body>
+<div class="container">
+	<!-- Nivel 1 ------------------------------------------------------------------------------------------------------------------------------------->
+	<div class="level1">
+		<h2>Level 1</h2>
+		<div class="window">
+			<h3>Assumptions</h3>
+			<ul>
+				<li th:each="sup:${supuestosNivel1}"><span
+					th:text="${sup.name}"></span></li>
+			</ul>
+		</div>
+		<div class="window">
+			<h3>E-R Models</h3>
+
+			<ul>
+				<li th:each="er:${modelosERNivel1}"><span th:text="${er.name}"></span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="window">
+			<h3>Relational Models</h3>
+
+			<li th:each="rel:${modelosRNivel1}"><span th:text="${rel.name}"></span>
+			</li>
+			</ul>
+
+
+		</div>
+
+	
+	</div>
+	<!-- Nivel 2 ----------------------------------------------------------------------------------------------------------------------------------------->
+	<div class="level2">
+		<h2>Level 2</h2>
+		<h3>Assumptions</h3>
+		<ul>
+			<li th:each="sup:${supuestosNivel2}"><span th:text="${sup.name}"></span>
+
+			</li>
+		</ul>
+		<div class="window">
+			<h3>E-R Models</h3>
+
+			<ul>
+				<li th:each="er:${modelosERNivel2}"><span th:text="${er.name}"></span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="window">
+			<h3>Relational Models</h3>
+
+			<li th:each="rel:${modelosRNivel2}"><span th:text="${rel.name}"></span>
+			</li>
+			</ul>
+
+
+		</div>
+	</div>
+	<!-- Nivel 3 ------------------------------------------------------------------------------------------------------------------------------------------>
+	<div class="level3">
+		<h2>Level 3</h2>
+		<h3>Assumptions</h3>
+		<ul>
+			<li th:each="sup:${supuestosNivel3}"><span th:text="${sup.name}"></span>
+
+			</li>
+		</ul>
+		<div class="window">
+			<h3>E-R Models</h3>
+
+			<ul>
+				<li th:each="er:${modelosERNivel3}"><span th:text="${er.name}"></span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="window">
+			<h3>Relational Models</h3>
+
+			<li th:each="rel:${modelosRNivel3}"><span th:text="${rel.name}"></span>
+			</li>
+			</ul>
+
+
+		</div>
+	</div>
+</html>
