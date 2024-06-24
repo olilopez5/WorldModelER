@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Creación</title>
+</head>
+<body>
+<form th:action="@{/crear/supuesto}" enctype="multipart/form-data" method="post">
+  Nombre: <input type="text" name="name"><br>
+  Nivel:<select name="level">
+  	<option value="1">Nivel 1</option>
+  	<option value="2">Nivel 2</option>
+  	<option value="3">Nivel 3</option>
+  </select><br>
+  Fichero:<input type="file" name="file" /><br>
+  <input type="submit" value="Crear" />
+</form>
+
+</body>
+</html>

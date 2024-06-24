@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.modelER.entity.ModeloER;
@@ -17,42 +18,42 @@ import com.project.modelER.service.IComunService;
 import com.project.modelER.service.exception.ServiceException;
 
 @Controller
-@RequestMapping("/inicio")
+@RequestMapping("/n")
 public class InicioController {
 	public static final Logger log = LoggerFactory.getLogger(InicioController.class);
 	
 	@Autowired
 	IComunService servicio;
 	
-	@GetMapping 
-	public String inicio(Model model) throws ServiceException {
+	@GetMapping("/{level}")
+	public String inicio(Model model,@PathVariable("level")Integer level) throws ServiceException {
 		log.info("[inicio]");
 		
-		List<Supuesto> supuestosNivel1 = servicio.getSupuestosNivel(1);
-		model.addAttribute("supuestosNivel1", supuestosNivel1);
-		List<Supuesto> supuestosNivel2 = servicio.getSupuestosNivel(2);
-		model.addAttribute("supuestosNivel2", supuestosNivel2);
-		List<Supuesto> supuestosNivel3 = servicio.getSupuestosNivel(3);
-		model.addAttribute("supuestosNivel3", supuestosNivel3);
+		model.addAttribute("title",getMessageLevel(level));
+		
+		List<Supuesto> supuestos = servicio.getSupuestosNivel(level);
+		model.addAttribute("supuestos", supuestos);
 				
+		List<ModeloER> modelosER = servicio.getModelosERNivel(level);
+		model.addAttribute("modelosER", modelosER);
 		
+		List<ModeloRelacional> modelosR = servicio.getModelosRNivel(level);
+		model.addAttribute("modelosR", modelosR);
+		return "level";
 		
-		
-		List<ModeloER> modelosERNivel1 = servicio.getModelosERNivel(1);
-		model.addAttribute("modelosERNivel1", modelosERNivel1);
-		List<ModeloER> modelosERNivel2 = servicio.getModelosERNivel(2);
-		model.addAttribute("modelosERNivel2", modelosERNivel2);
-		List<ModeloER> modelosERNivel3 = servicio.getModelosERNivel(3);
-		model.addAttribute("modelosERNivel3", modelosERNivel3);
-		
-		List<ModeloRelacional> modelosRNivel1 = servicio.getModelosRNivel(1);
-		model.addAttribute("modelosRNivel1", modelosRNivel1);
-		List<ModeloRelacional> modelosRNivel2 = servicio.getModelosRNivel(2);
-		model.addAttribute("modelosRNivel2", modelosRNivel2);
-		List<ModeloRelacional> modelosRNivel3 = servicio.getModelosRNivel(3);
-		model.addAttribute("modelosRNivel2", modelosRNivel3);
-		return "inicio";
-		
+	}
+
+	private String getMessageLevel(Integer level) {
+	     switch(level){
+	    	 case 1:
+	    		 return "title.level.easy";
+	    	 case 2:
+	    		 return "title.level.medium";
+	    	 case 3:
+	    		 return "title.level.hard";
+
+	     }	
+	     return null;
 	}
 
 }

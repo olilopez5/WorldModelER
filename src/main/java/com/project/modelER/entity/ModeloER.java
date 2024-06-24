@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,8 +22,8 @@ public class ModeloER {
 	@Column
 	private Integer level;
 	
-	@Column
-	private String image;
+	@Lob
+	private byte[] image;
 
 	public Long getId() {
 		return id;
@@ -48,12 +49,14 @@ public class ModeloER {
 		this.level = level;
 	}
 
-	public String getImagen() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImagen(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
+
+	
 	
 }

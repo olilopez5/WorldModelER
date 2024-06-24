@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,8 +24,8 @@ public class Supuesto {
 	@Column
 	private Integer level;
 	
-	@Column(length=5000)
-	private String text;
+	@Lob
+	private byte[] document;
 
 	public Long getId() {
 		return id;
@@ -50,13 +51,17 @@ public class Supuesto {
 		this.level = level;
 	}
 
-	public String getText() {
-		return text;
+	public byte[] getDocument() {
+		return document;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setDocument(byte[] document) {
+		this.document = document;
 	}
+
+	
+
+	
 	
 	
 }

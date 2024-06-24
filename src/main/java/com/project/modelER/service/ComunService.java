@@ -23,10 +23,14 @@ public class ComunService implements IComunService {
 	
 	@Autowired
 	SupuestoRepository supuestosRepository;
+	@Autowired	
+	ModeloERRepository modelosERRepository;
+	@Autowired
+	ModeloRRepository modelosRRepository;
 
 	@Override
 	public List<Supuesto> getSupuestosNivel(Integer level) throws ServiceException{
-		log.info("getSupuestosNivel1");
+		log.info("getSupuestosNivel");
 		log.debug("level:"+level);
 		List<Supuesto> supuestos = new ArrayList<Supuesto>();
 		try {
@@ -41,12 +45,10 @@ public class ComunService implements IComunService {
 		return supuestos;
 		
 	}
-	@Autowired
 	
-	ModeloERRepository modelosERRepository;
 	@Override
 	public List<ModeloER> getModelosERNivel(Integer level) throws ServiceException{
-		log.info("getModelosERNivel1");
+		log.info("getModelosERNivel");
 		log.debug("level:"+level);
 		List<ModeloER> modelosER = new ArrayList<ModeloER>();
 		try {
@@ -61,13 +63,12 @@ public class ComunService implements IComunService {
 		return modelosER;
 		
 	}
-	@Autowired
-	ModeloRRepository modelosRRepository;
+	
 
 	@Override
 	public List<ModeloRelacional> getModelosRNivel(Integer level) throws ServiceException{
 		
-		log.info("getModelosRNivel1");
+		log.info("getModelosRNivel");
 		log.debug("level:"+level);
 		List<ModeloRelacional> modelosR = new ArrayList<ModeloRelacional>();
 		try {
