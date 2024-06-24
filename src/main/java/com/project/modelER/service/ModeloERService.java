@@ -2,13 +2,14 @@ package com.project.modelER.service;
 
 import java.util.List;
 
-import com.project.modelER.entity.ModeloER;
-import com.project.modelER.entity.Supuesto;
+import org.springframework.web.multipart.MultipartFile;
 
-public interface ModelosERService {
-	List<ModeloER> findAllModelosER();
+import com.project.modelER.entity.ModeloER;
+
+public interface ModeloERService {
+	List<ModeloER> findAllModeloER();
 	
-	ModeloER saveModeloER(ModeloER modeloER);
+	ModeloER saveModeloER(ModeloER modeloER,MultipartFile file);
 
 	ModeloER updateModeloER(Long id, ModeloER modeloER);
 

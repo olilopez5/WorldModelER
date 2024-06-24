@@ -1,5 +1,6 @@
 package com.project.modelER.service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.modelER.controller.InicioController;
+import com.project.modelER.entity.MRelacional;
 import com.project.modelER.entity.ModeloER;
-import com.project.modelER.entity.ModeloRelacional;
 import com.project.modelER.entity.Supuesto;
+import com.project.modelER.repository.MRelacionalRepository;
 import com.project.modelER.repository.ModeloERRepository;
-import com.project.modelER.repository.ModeloRRepository;
+
 import com.project.modelER.repository.SupuestoRepository;
 import com.project.modelER.service.exception.ServiceException;
 
@@ -26,7 +28,8 @@ public class ComunService implements IComunService {
 	@Autowired	
 	ModeloERRepository modelosERRepository;
 	@Autowired
-	ModeloRRepository modelosRRepository;
+	MRelacionalRepository mRelacionalRepository;
+
 
 	@Override
 	public List<Supuesto> getSupuestosNivel(Integer level) throws ServiceException{
@@ -63,24 +66,26 @@ public class ComunService implements IComunService {
 		return modelosER;
 		
 	}
-	
 
 	@Override
-	public List<ModeloRelacional> getModelosRNivel(Integer level) throws ServiceException{
-		
-		log.info("getModelosRNivel");
+	public List<MRelacional> getMRelacionalesNivel(Integer level) throws ServiceException {
+		log.info("getMRelacionalesNivel");
 		log.debug("level:"+level);
-		List<ModeloRelacional> modelosR = new ArrayList<ModeloRelacional>();
+		List<MRelacional> mRelacionales = new ArrayList<MRelacional>();
 		try {
-			modelosR = modelosRRepository.findAllByLevel(level);
+			mRelacionales = mRelacionalRepository.findAllByLevel(level);
 			//Opcion 2. Lambda
-			// modelosR = modelosRRepository.findAll().stream().filter(s -> s.getLevel()==1).collect(Collectors.toList());
+			// modelosER = modelosERRepository.findAll().stream().filter(s -> s.getLevel()==1).collect(Collectors.toList());
 		}catch(Exception e) {
 			log.error("Error general",e);
 			throw new ServiceException();
 		}
 		
-		return modelosR;
+		return mRelacionales;
+	}
+	
+
+	
 		
 	}
 
@@ -91,4 +96,4 @@ public class ComunService implements IComunService {
 	
 	
 	
-}
+

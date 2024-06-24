@@ -9,9 +9,9 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name="MODELOS-R")
+@Table (name="MODELOS RELACIONALES")
 
-public class ModeloRelacional {
+public class MRelacional {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;

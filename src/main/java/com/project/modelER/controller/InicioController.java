@@ -1,5 +1,7 @@
 package com.project.modelER.controller;
 
+
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,8 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.modelER.entity.MRelacional;
 import com.project.modelER.entity.ModeloER;
-import com.project.modelER.entity.ModeloRelacional;
+
 import com.project.modelER.entity.Supuesto;
 import com.project.modelER.service.IComunService;
 import com.project.modelER.service.exception.ServiceException;
@@ -37,8 +40,8 @@ public class InicioController {
 		List<ModeloER> modelosER = servicio.getModelosERNivel(level);
 		model.addAttribute("modelosER", modelosER);
 		
-		List<ModeloRelacional> modelosR = servicio.getModelosRNivel(level);
-		model.addAttribute("modelosR", modelosR);
+		List<MRelacional> mRelacionales = servicio.getMRelacionalesNivel(level);
+		model.addAttribute("mRelacionales", mRelacionales);
 		return "level";
 		
 	}

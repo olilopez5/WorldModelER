@@ -7,15 +7,40 @@
 </head>
 <body>
 <form th:action="@{/crear/supuesto}" enctype="multipart/form-data" method="post">
-  Nombre: <input type="text" name="name"><br>
-  Nivel:<select name="level">
+<p>Crea tu Supuesto </p>
+ <p> Nombre: <input type="text" name="name"> </p><br>
+  <p>Nivel:<select name="level"> 
   	<option value="1">Nivel 1</option>
   	<option value="2">Nivel 2</option>
   	<option value="3">Nivel 3</option>
-  </select><br>
-  Fichero:<input type="file" name="file" /><br>
-  <input type="submit" value="Crear" />
+  </select></p><br> 
+  <p>Fichero:<input type="file" name="file" /> <br>
+  <input type="submit" value="Crear" /></p>
+
 </form>
 
+<form th:action="@{/crear/modeloER}" enctype="multipart/form-data" method="post">
+<p>Crea tu Modelo E-R </p>
+  <p>Nombre: <input type="text" name="name"></p><br>
+ <p> Nivel:<select name="level">
+  	<option value="1">Nivel 1</option>
+  	<option value="2">Nivel 2</option>
+  	<option value="3">Nivel 3</option>
+  </select></p><br>
+ <p> Fichero:<input type="file" name="file" /><br>
+  <input type="submit" value="Crear" /></p>
+</form>
+
+<form th:action="@{/crear/modeloRelacional}" enctype="multipart/form-data" method="post">
+<p>Crea tu Modelo Relacional </p>
+ <p> Nombre: <input type="text" name="name"></p><br>
+  <p>Nivel:<select name="level">
+  	<option value="1">Nivel 1</option>
+  	<option value="2">Nivel 2</option>
+  	<option value="3">Nivel 3</option>
+  </select></p><br>
+   <p>Fichero:<input type="file" name="file" /><br>
+  <input type="submit" value="Crear" /></p>
+</form>
 </body>
 </html>
