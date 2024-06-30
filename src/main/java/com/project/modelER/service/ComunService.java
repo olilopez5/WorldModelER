@@ -1,6 +1,5 @@
 package com.project.modelER.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,83 +16,86 @@ import com.project.modelER.repository.MRelacionalRepository;
 import com.project.modelER.repository.ModeloERRepository;
 
 import com.project.modelER.repository.SupuestoRepository;
+import com.project.modelER.service.exception.ErrorCode;
 import com.project.modelER.service.exception.ServiceException;
 
 @Service
 public class ComunService implements IComunService {
 	public static final Logger log = LoggerFactory.getLogger(InicioController.class);
-	
+
 	@Autowired
 	SupuestoRepository supuestosRepository;
-	@Autowired	
+	@Autowired
 	ModeloERRepository modelosERRepository;
 	@Autowired
 	MRelacionalRepository mRelacionalRepository;
 
-
 	@Override
-	public List<Supuesto> getSupuestosNivel(Integer level) throws ServiceException{
+	public List<Supuesto> getSupuestosNivel(Integer level) throws ServiceException {
 		log.info("getSupuestosNivel");
-		log.debug("level:"+level);
+		log.debug("level:" + level);
 		List<Supuesto> supuestos = new ArrayList<Supuesto>();
 		try {
+
 			supuestos = supuestosRepository.findAllByLevel(level);
-			//Opcion 2. Lambda
-			//supuestos = supuestosRepository.findAll().stream().filter(s -> s.getLevel()==1).collect(Collectors.toList());
-		}catch(Exception e) {
-			log.error("Error general",e);
-			throw new ServiceException();
+			if (level.equals(null))
+				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
+			// Opcion 2. Lambda
+			// supuestos = supuestosRepository.findAll().stream().filter(s ->
+			// s.getLevel()==1).collect(Collectors.toList());
+		} catch (ServiceException se) {
+			log.error("Error Interno", se);
+			throw se;
+		} catch (Exception e) {
+			log.error("Exception", e);
+			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
-		
+
 		return supuestos;
-		
+
 	}
-	
+
 	@Override
-	public List<ModeloER> getModelosERNivel(Integer level) throws ServiceException{
+	public List<ModeloER> getModelosERNivel(Integer level) throws ServiceException {
 		log.info("getModelosERNivel");
-		log.debug("level:"+level);
+		log.debug("level:" + level);
 		List<ModeloER> modelosER = new ArrayList<ModeloER>();
 		try {
 			modelosER = modelosERRepository.findAllByLevel(level);
-			//Opcion 2. Lambda
-			// modelosER = modelosERRepository.findAll().stream().filter(s -> s.getLevel()==1).collect(Collectors.toList());
-		}catch(Exception e) {
-			log.error("Error general",e);
-			throw new ServiceException();
+			if (level.equals(null))
+				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
+		} catch (ServiceException se) {
+			log.error("Error Interno", se);
+			throw se;
+		} catch (Exception e) {
+			log.error("Exception", e);
+			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
-		
+
+
 		return modelosER;
-		
+
 	}
 
 	@Override
 	public List<MRelacional> getMRelacionalesNivel(Integer level) throws ServiceException {
 		log.info("getMRelacionalesNivel");
-		log.debug("level:"+level);
+		log.debug("level:" + level);
 		List<MRelacional> mRelacionales = new ArrayList<MRelacional>();
 		try {
 			mRelacionales = mRelacionalRepository.findAllByLevel(level);
-			//Opcion 2. Lambda
-			// modelosER = modelosERRepository.findAll().stream().filter(s -> s.getLevel()==1).collect(Collectors.toList());
-		}catch(Exception e) {
-			log.error("Error general",e);
-			throw new ServiceException();
+			if (level.equals(null))
+				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
+		} catch (ServiceException se) {
+			log.error("Error Interno", se);
+			throw se;
+		} catch (Exception e) {
+			log.error("Exception", e);
+			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
-		
+
+
 		return mRelacionales;
 	}
-	
 
-	
-		
-	}
-
-	
-	
-	
-	
-	
-	
-	
-
+}

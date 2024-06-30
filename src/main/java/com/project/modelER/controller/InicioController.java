@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import com.project.modelER.service.IComunService;
 import com.project.modelER.service.exception.ServiceException;
 
 @Controller
-@RequestMapping("/n")
+@RequestMapping("/level")
 public class InicioController {
 	public static final Logger log = LoggerFactory.getLogger(InicioController.class);
 	
@@ -59,4 +60,12 @@ public class InicioController {
 	     return null;
 	}
 
+	@ExceptionHandler({ ServiceException.class, Exception.class })
+    public String  handleException(Model model) {
+		
+		model.addAttribute("mensaje","Se ha producido un error esperado");		
+
+		return "error";
+    }
+	
 }

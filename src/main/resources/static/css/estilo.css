@@ -1,0 +1,67 @@
+body {
+    font-family: Calibri, sans-serif;
+    background-color: #443941;  /* Fondo oscuro para modo noche */
+    color: #f5e6d3;  /* Color crema para el texto */
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #f5e6d3;  /* Color crema para los títulos */
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.level {
+    background-color: #2a2a2a;  /* Un poco más claro que el fondo para contraste */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.33% - 20px);
+    min-width: 250px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.level div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;  /* Ajusta esto según necesites */
+}
+
+a {
+    display: inline-block;
+}
+
+img {
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+/* Cambia el color de los iconos a crema */
+img {
+    filter: invert(92%) sepia(18%) saturate(320%) hue-rotate(325deg) brightness(103%) contrast(92%);
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .level {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .level {
+        width: 100%;
+    }
+}

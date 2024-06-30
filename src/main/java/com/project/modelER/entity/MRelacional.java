@@ -1,5 +1,7 @@
 package com.project.modelER.entity;
 
+import java.util.Arrays;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class MRelacional {
 	private Integer level;
 	
 	@Lob
-	private byte[] image;
+	private byte[] document;
 
 	public Long getId() {
 		return id;
@@ -49,12 +51,20 @@ public class MRelacional {
 		this.level = level;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public byte[] getDocument() {
+		return document;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setDocument(byte[] document) {
+		this.document = document;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "MRelacional [id=" + id + ", name=" + name + ", level=" + level + ", document="
+				+ Arrays.toString(document) + ", getId()=" + getId() + ", getName()=" + getName() + ", getLevel()="
+				+ getLevel() + ", getDocument()=" + Arrays.toString(getDocument()) + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
 }

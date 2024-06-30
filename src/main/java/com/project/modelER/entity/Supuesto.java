@@ -1,5 +1,7 @@
 package com.project.modelER.entity;
 
+import java.util.Arrays;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,20 +12,20 @@ import jakarta.persistence.Table;
 
 @Entity
 
-@Table(name="SUPUESTOS")
+@Table(name = "SUPUESTOS")
 
 public class Supuesto {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column
 	private String name;
-	
+
 	@Column
 	private Integer level;
-	
+
 	@Lob
 	private byte[] document;
 
@@ -59,10 +61,12 @@ public class Supuesto {
 		this.document = document;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Supuesto [id=" + id + ", name=" + name + ", level=" + level + ", document=" + Arrays.toString(document)
+				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getLevel()=" + getLevel()
+				+ ", getDocument()=" + Arrays.toString(getDocument()) + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
 
-	
-	
-	
 }
-
