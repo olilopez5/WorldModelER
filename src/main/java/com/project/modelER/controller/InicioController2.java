@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.modelER.entity.MRelacional;
 import com.project.modelER.entity.ModeloER;
-import com.project.modelER.entity.ModeloRelacional;
+
 import com.project.modelER.entity.Supuesto;
 import com.project.modelER.service.IComunService;
 import com.project.modelER.service.exception.ServiceException;

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{${title}}"></title>
+<link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+	<h1 th:text="#{${title}}"></h1>
+
+	<div class="container">
+
+		<div>
+
+			<div>
+				<h3 th:text="#{title.tipo.sup}"></h3>
+				<a th:href="@{'/crear/supuesto'}"><img width="30" height="30"
+					src="https://img.icons8.com/ios/50/plus--v1.png" alt="plus--v1" /></a>
+				<table>
+					<tr>
+						<td th:each="sup:${supuestos}"><img width="64" height="64"
+							src="https://img.icons8.com/pastel-glyph/64/regular-file.png"
+							alt="regular-file" /><br> <span th:text="${sup.name}"></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<h3 th:text="#{title.tipo.mER}"></h3>
+				<a th:href="@{'/crear/modeloER'}"><img width="30" height="30"
+					src="https://img.icons8.com/ios/50/plus--v1.png" alt="plus--v1" /></a>
+				<table>
+					<tr>
+						<td th:each="er:${modelosER}"><a
+							href="https://icons8.com/icon/68603/el-primer-organigrama-apilado-resaltó-el-primer-nodo"></a>
+							<span th:text="${er.name}"></span></td>
+					</tr>
+				</table>
+			</div>
+
+			<div>
+				<h3 th:text="#{title.tipo.mRel}"></h3>
+				<a th:href="@{'/crear/modeloRelacional'}"><img width="30"
+					height="30" src="https://img.icons8.com/ios/50/plus--v1.png"
+					alt="plus--v1" /></a>
+				<table>
+					<tr>
+						<td th:each="rel:${mRelacional}"><img width="30" height="30"
+							src="https://img.icons8.com/small/16/static-view-level2.png"
+							alt="static-view-level2" /> <span th:text="${rel.name}">></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+
+		</div>
+
+	</div>
+</body>
+</html>

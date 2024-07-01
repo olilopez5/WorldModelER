@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,74 +18,79 @@ import com.project.modelER.entity.Supuesto;
 import com.project.modelER.service.MRelacionalService;
 import com.project.modelER.service.ModeloERService;
 import com.project.modelER.service.SupuestoService;
+import com.project.modelER.service.exception.ServiceException;
 
 @Controller
 @RequestMapping("/crear")
-public class CrearController  {
+public class CrearController {
 	public static final Logger log = LoggerFactory.getLogger(CrearController.class);
-	
-	
+
 	@Autowired
 	SupuestoService supuestoService;
 
 	@GetMapping("/supuesto")
-	public String toCreateSupuesto(){
+	public String toCreateSupuesto() {
 		log.info("toCreateSupuesto");
-		return "creacion";
-		
+		return "create";
+
 	}
-	
-	
+
 	@PostMapping("/supuesto")
-	public String crearSupuesto(Supuesto supuesto,@RequestParam("file") MultipartFile file ){
+	public String crearSupuesto(Supuesto supuesto, @RequestParam("file") MultipartFile file) {
 		log.info("crearSupuesto");
-		
+
 		supuestoService.saveSupuesto(supuesto, file);
-		
-		return "redirect:/n/"+supuesto.getLevel();
-		
+
+		return "redirect:/level/" + supuesto.getLevel();
+
 	}
-	
-	
-	
-	
+
 	@Autowired
 	ModeloERService modeloERService;
-	
+
 	@GetMapping("/modeloER")
-	public String toCreateModeloER(){
+	public String toCreateModeloER() {
 		log.info("toCreateModeloER");
-		return "creacion";
-		
+		return "create";
+
 	}
-	
-	
+
 	@PostMapping("/modeloER")
-	public String crearModeloER(ModeloER modeloER,@RequestParam("file") MultipartFile file ){
+	public String crearModeloER(ModeloER modeloER, @RequestParam("file") MultipartFile file) {
 		log.info("crearModeloER");
-		
+
 		modeloERService.saveModeloER(modeloER, file);
-		
-		return "redirect:/n/"+modeloER.getLevel();
-		
+
+		return "redirect:/level/" + modeloER.getLevel();
+
 	}
-	
+
 	@Autowired
 	MRelacionalService mRelacionalService;
-	
+
 	@GetMapping("/modeloRelacional")
 	public String toCreateMRelacional() {
 		log.info("toCreateMRelacional");
-		return "creacion";
-		}
-		
-		@PostMapping("/modeloRelacional")
-		public String toCreateMRelacional(MRelacional mRelacional,@RequestParam("file") MultipartFile file) {
-			
+		return "create";
+	}
+
+	@PostMapping("/modeloRelacional")
+	public String toCreateMRelacional(MRelacional mRelacional, @RequestParam("file") MultipartFile file) {
+		log.info("crearModeloRelacional");
 		mRelacionalService.saveMRelacional(mRelacional, file);
-		
-		return "redirect:/n/"+mRelacional.getLevel();
-		
+
+		return "redirect:/level/" + mRelacional.getLevel();
+
 	}
 	
+
+	@ExceptionHandler({ ServiceException.class, Exception.class })
+    public String  handleException(Model model) {
+		
+		model.addAttribute("mensaje","Se ha producido un error esperado");		
+
+		return "error";
+    }
+	
 }
+
