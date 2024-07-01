@@ -17,11 +17,12 @@ import com.project.modelER.repository.ModeloERRepository;
 
 import com.project.modelER.repository.SupuestoRepository;
 import com.project.modelER.service.exception.ErrorCode;
+import com.project.modelER.service.exception.ErrorMessage;
 import com.project.modelER.service.exception.ServiceException;
 
 @Service
 public class ComunService implements IComunService {
-	public static final Logger log = LoggerFactory.getLogger(InicioController.class);
+	public static final Logger log = LoggerFactory.getLogger(ComunService.class);
 
 	@Autowired
 	SupuestoRepository supuestosRepository;
@@ -32,14 +33,15 @@ public class ComunService implements IComunService {
 
 	@Override
 	public List<Supuesto> getSupuestosNivel(Integer level) throws ServiceException {
-		log.info("getSupuestosNivel");
-		log.debug("level:" + level);
+		log.info("[getSupuestosNivel]");
+		log.debug("['level:' + level]");
 		List<Supuesto> supuestos = new ArrayList<Supuesto>();
 		try {
 
 			supuestos = supuestosRepository.findAllByLevel(level);
 			if (level.equals(null))
 				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
+			
 			// Opcion 2. Lambda
 			// supuestos = supuestosRepository.findAll().stream().filter(s ->
 			// s.getLevel()==1).collect(Collectors.toList());
@@ -57,13 +59,14 @@ public class ComunService implements IComunService {
 
 	@Override
 	public List<ModeloER> getModelosERNivel(Integer level) throws ServiceException {
-		log.info("getModelosERNivel");
+		log.info("[getModelosERNivel]");
 		log.debug("level:" + level);
 		List<ModeloER> modelosER = new ArrayList<ModeloER>();
 		try {
 			modelosER = modelosERRepository.findAllByLevel(level);
 			if (level.equals(null))
 				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
+			
 		} catch (ServiceException se) {
 			log.error("Error Interno", se);
 			throw se;
@@ -71,7 +74,6 @@ public class ComunService implements IComunService {
 			log.error("Exception", e);
 			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
-
 
 		return modelosER;
 
@@ -79,13 +81,14 @@ public class ComunService implements IComunService {
 
 	@Override
 	public List<MRelacional> getMRelacionalesNivel(Integer level) throws ServiceException {
-		log.info("getMRelacionalesNivel");
+		log.info("[getMRelacionalesNivel]");
 		log.debug("level:" + level);
 		List<MRelacional> mRelacionales = new ArrayList<MRelacional>();
 		try {
 			mRelacionales = mRelacionalRepository.findAllByLevel(level);
 			if (level.equals(null))
 				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
+		;
 		} catch (ServiceException se) {
 			log.error("Error Interno", se);
 			throw se;
@@ -93,7 +96,6 @@ public class ComunService implements IComunService {
 			log.error("Exception", e);
 			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
-
 
 		return mRelacionales;
 	}

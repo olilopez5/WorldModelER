@@ -15,4 +15,6 @@ public interface SupuestoService {
 
 	void deleteSupuesto(Long id);
 
+	Supuesto getServicio(Long id);
+
 }

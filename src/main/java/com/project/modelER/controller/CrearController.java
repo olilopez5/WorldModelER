@@ -31,7 +31,7 @@ public class CrearController {
 	@GetMapping("/supuesto")
 	public String toCreateSupuesto() {
 		log.info("toCreateSupuesto");
-		return "create";
+		return "createSupuesto";
 
 	}
 
@@ -51,7 +51,7 @@ public class CrearController {
 	@GetMapping("/modeloER")
 	public String toCreateModeloER() {
 		log.info("toCreateModeloER");
-		return "create";
+		return "createModeloER";
 
 	}
 
@@ -71,7 +71,7 @@ public class CrearController {
 	@GetMapping("/modeloRelacional")
 	public String toCreateMRelacional() {
 		log.info("toCreateMRelacional");
-		return "create";
+		return "createMRelacional";
 	}
 
 	@PostMapping("/modeloRelacional")
@@ -84,13 +84,7 @@ public class CrearController {
 	}
 	
 
-	@ExceptionHandler({ ServiceException.class, Exception.class })
-    public String  handleException(Model model) {
-		
-		model.addAttribute("mensaje","Se ha producido un error esperado");		
-
-		return "error";
-    }
+	
 	
 }
 

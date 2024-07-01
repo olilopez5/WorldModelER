@@ -60,12 +60,6 @@ public class InicioController {
 	     return null;
 	}
 
-	@ExceptionHandler({ ServiceException.class, Exception.class })
-    public String  handleException(Model model) {
-		
-		model.addAttribute("mensaje","Se ha producido un error esperado");		
-
-		return "error";
-    }
+	
 	
 }

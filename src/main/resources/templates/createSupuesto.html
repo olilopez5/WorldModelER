@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title th:text="#{title.create}"></title>
+<link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+	<form th:action="@{/crear/supuesto}" enctype="multipart/form-data" method="post">
+    <p th:text="#{title.crear.sup}"></p>
+    <p>
+        <span th:text="#{campo.nombre}"></span>
+        <input type="text" name="name">
+    </p>
+    <br>
+    <p>
+        <span th:text="#{campo.level}"></span>
+        <select name="level">
+            <option value="1" th:text="#{title.level.easy}"></option>
+            <option value="2" th:text="#{title.level.medium}"></option>
+            <option value="3" th:text="#{title.level.hard}"></option>
+        </select>
+    </p>
+    <br>
+    <p>
+        <span th:text="#{campo.fichero}"></span>
+        <input type="file" name="file" />
+        <br>
+        <input type="submit" value="Crear" />
+    </p>
+</form>
+
+	
+</body>
+</html>
