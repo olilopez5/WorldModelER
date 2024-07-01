@@ -64,9 +64,7 @@ public class Supuesto {
 	@Override
 	public String toString() {
 		return "Supuesto [id=" + id + ", name=" + name + ", level=" + level + ", document=" + Arrays.toString(document)
-				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getLevel()=" + getLevel()
-				+ ", getDocument()=" + Arrays.toString(getDocument()) + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+				+ "]";
 	}
 
 }

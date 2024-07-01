@@ -5,16 +5,15 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.modelER.entity.Supuesto;
+import com.project.modelER.service.exception.ServiceException;
 
 public interface SupuestoService {
-	List<Supuesto> findAllSupuestos();
+	List<Supuesto> findAllSupuestos() throws ServiceException;
 
-	Supuesto saveSupuesto(Supuesto supuesto,MultipartFile file);
+	Supuesto saveSupuesto(Supuesto supuesto,MultipartFile file)throws ServiceException;
 
-	Supuesto updateSupuesto(Long id, Supuesto supuesto);
+	void deleteSupuesto(Long id)throws ServiceException;
 
-	void deleteSupuesto(Long id);
-
-	Supuesto getServicio(Long id);
+	Supuesto getServicio(Long id)throws ServiceException;
 
 }

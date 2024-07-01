@@ -12,67 +12,84 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.modelER.entity.Supuesto;
 import com.project.modelER.repository.SupuestoRepository;
-
+import com.project.modelER.service.exception.ErrorCode;
+import com.project.modelER.service.exception.ServiceException;
 
 @Service
 public class SupuestoServImplement implements SupuestoService {
 	public static final Logger log = LoggerFactory.getLogger(SupuestoServImplement.class);
-	
-	
+
 	@Autowired
 	SupuestoRepository supuestoRepository;
 
 	@Override
-	public List<Supuesto> findAllSupuestos() {
+	public List<Supuesto> findAllSupuestos() throws ServiceException {
 		log.info("[findAllSupuestos]");
-		
-		return supuestoRepository.findAll();
+		log.debug("[findAllSupuestos: " + "]");
+
+		List<Supuesto> supuestos;
+
+		try {
+			supuestos = supuestoRepository.findAll();
+
+		} catch (Exception e) {
+			log.error("Exception", e);
+			throw new ServiceException(ErrorCode.ERROR_GENERAL);
+		}
+
+		return supuestos;
+
 	}
 
 	@Override
-	public Supuesto saveSupuesto(Supuesto supuesto,MultipartFile file) {
+	public Supuesto saveSupuesto(Supuesto supuesto, MultipartFile file) throws ServiceException {
+		log.info("[saveSupuesto]");
+		log.debug("[saveSupuesto: " + supuesto + "]");
 		try {
 			supuesto.setDocument(file.getBytes());
 			return supuestoRepository.save(supuesto);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			log.error("Exception", e);
+			throw new ServiceException(ErrorCode.ERROR_GENERAL);
 		}
-		
+
 		return null;
 	}
 
 	@Override
-	public Supuesto updateSupuesto(Long id, Supuesto supuesto) {
-		
-		//if (supuesto==null)
-			
-		
-		return null;
+	public void deleteSupuesto(Long id) throws ServiceException {
+		log.info("[deleteSupuesto]");
+		log.debug("[deleteSupuesto: " + id + "]");
+
+		try {
+			supuestoRepository.deleteById(id);
+
+		} catch (Exception e) {
+			log.error("Exception", e);
+			throw new ServiceException(ErrorCode.SUPUESTO_NOT_FOUND);
+
+		}
 	}
 
+	
 	@Override
-	public void deleteSupuesto(Long id) {
-		supuestoRepository.deleteById(id);
-		
-	}
-
-	@Override
-	public Supuesto getServicio(Long id) {
+	public Supuesto getServicio(Long id) throws ServiceException {
+		log.info("[getServicio]");
+		log.debug("[getServicio: " + id + "]");
 		try {
 			Optional<Supuesto> opSupuesto = supuestoRepository.findById(id);
-			if(!opSupuesto.isPresent()) {
-				//TODO mandas excepcion
+			if (!opSupuesto.isPresent()) {
+				throw new ServiceException(ErrorCode.SUPUESTO_NOT_FOUND);
 			}
 			return opSupuesto.get();
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Exception", e);
+			throw new ServiceException(ErrorCode.ERROR_GENERAL);
 		}
-		return null;
-		
-	}
 
+	}
 }

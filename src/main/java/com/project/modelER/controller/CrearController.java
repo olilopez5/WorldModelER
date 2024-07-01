@@ -4,8 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,16 +29,21 @@ public class CrearController {
 
 	@GetMapping("/supuesto")
 	public String toCreateSupuesto() {
-		log.info("toCreateSupuesto");
+		log.info("[toCreateSupuesto]");
 		return "createSupuesto";
 
 	}
 
 	@PostMapping("/supuesto")
 	public String crearSupuesto(Supuesto supuesto, @RequestParam("file") MultipartFile file) {
-		log.info("crearSupuesto");
+		log.info("[crearSupuesto]");
 
-		supuestoService.saveSupuesto(supuesto, file);
+		try {
+			supuestoService.saveSupuesto(supuesto, file);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "redirect:/level/" + supuesto.getLevel();
 
@@ -50,16 +54,21 @@ public class CrearController {
 
 	@GetMapping("/modeloER")
 	public String toCreateModeloER() {
-		log.info("toCreateModeloER");
+		log.info("[toCreateModeloER]");
 		return "createModeloER";
 
 	}
 
 	@PostMapping("/modeloER")
 	public String crearModeloER(ModeloER modeloER, @RequestParam("file") MultipartFile file) {
-		log.info("crearModeloER");
+		log.info("[crearModeloER]");
 
-		modeloERService.saveModeloER(modeloER, file);
+		try {
+			modeloERService.saveModeloER(modeloER, file);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "redirect:/level/" + modeloER.getLevel();
 
@@ -70,14 +79,19 @@ public class CrearController {
 
 	@GetMapping("/modeloRelacional")
 	public String toCreateMRelacional() {
-		log.info("toCreateMRelacional");
+		log.info("[toCreateMRelacional]");
 		return "createMRelacional";
 	}
 
 	@PostMapping("/modeloRelacional")
 	public String toCreateMRelacional(MRelacional mRelacional, @RequestParam("file") MultipartFile file) {
-		log.info("crearModeloRelacional");
-		mRelacionalService.saveMRelacional(mRelacional, file);
+		log.info("[crearModeloRelacional]");
+		try {
+			mRelacionalService.saveMRelacional(mRelacional, file);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "redirect:/level/" + mRelacional.getLevel();
 

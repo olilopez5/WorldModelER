@@ -1,23 +1,20 @@
 
+package com.project.modelER.service;
 
-	package com.project.modelER.service;
-
-	import java.util.List;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.modelER.entity.MRelacional;
+import com.project.modelER.service.exception.ServiceException;
 
+public interface MRelacionalService {
 
+	List<MRelacional> findAllMRelacionales() throws ServiceException;
 
-	public interface MRelacionalService {
+	MRelacional saveMRelacional(MRelacional mRelacional, MultipartFile file) throws ServiceException;
+
+	void deleteMRelacional(Long id) throws ServiceException;
 	
-	List<MRelacional> findAllMRelacionales();
-		
-	MRelacional saveMRelacional(MRelacional mRelacional,MultipartFile file);
-
-	MRelacional updateMRelacional(Long id, MRelacional mRelacional);
-
-		void deleteMRelacional(Long id);
-	}
-
+	//MRelacional getImage(Long id)throws ServiceException;
+}

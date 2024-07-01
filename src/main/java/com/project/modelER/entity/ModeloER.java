@@ -11,9 +11,10 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name="MODELOS-E-R")
+@Table (name="MODELOS_ER")
 
 public class ModeloER {
+	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
@@ -62,11 +63,10 @@ public class ModeloER {
 
 	@Override
 	public String toString() {
-		return "ModeloER [id=" + id + ", name=" + name + ", level=" + level + ", image=" + Arrays.toString(document)
-				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getLevel()=" + getLevel() + ", getImage()="
-				+ Arrays.toString(getDocument()) + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return "ModeloER [id=" + id + ", name=" + name + ", level=" + level + ", document=" + Arrays.toString(document)
+				+ "]";
 	}
+
 
 	
 	

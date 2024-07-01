@@ -11,7 +11,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name="MODELOS RELACIONALES")
+@Table (name="MODELOS_RELACIONALES")
 
 public class MRelacional {
 	@Id
@@ -62,9 +62,7 @@ public class MRelacional {
 	@Override
 	public String toString() {
 		return "MRelacional [id=" + id + ", name=" + name + ", level=" + level + ", document="
-				+ Arrays.toString(document) + ", getId()=" + getId() + ", getName()=" + getName() + ", getLevel()="
-				+ getLevel() + ", getDocument()=" + Arrays.toString(getDocument()) + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ Arrays.toString(document) + "]";
 	}
 
 }
