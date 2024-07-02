@@ -34,22 +34,22 @@ public class ComunService implements IComunService {
 	@Override
 	public List<Supuesto> getSupuestosNivel(Integer level) throws ServiceException {
 		log.info("[getSupuestosNivel]");
-		log.debug("['level:' + level]");
+		log.debug("[level:" + level +"]");
 		List<Supuesto> supuestos = new ArrayList<Supuesto>();
 		try {
 
 			supuestos = supuestosRepository.findAllByLevel(level);
-			if (level.equals(null))
+			if (level==null)
 				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
 			
 			// Opcion 2. Lambda
 			// supuestos = supuestosRepository.findAll().stream().filter(s ->
 			// s.getLevel()==1).collect(Collectors.toList());
 		} catch (ServiceException se) {
-			log.error("Error Interno", se);
+			log.error("[Error Interno]", se);
 			throw se;
 		} catch (Exception e) {
-			log.error("Exception", e);
+			log.error("[Exception]", e);
 			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
 
@@ -60,18 +60,18 @@ public class ComunService implements IComunService {
 	@Override
 	public List<ModeloER> getModelosERNivel(Integer level) throws ServiceException {
 		log.info("[getModelosERNivel]");
-		log.debug("level:" + level);
+		log.debug("[level:" + level +"]");
 		List<ModeloER> modelosER = new ArrayList<ModeloER>();
 		try {
 			modelosER = modelosERRepository.findAllByLevel(level);
-			if (level.equals(null))
+			if (level==null)
 				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
 			
 		} catch (ServiceException se) {
-			log.error("Error Interno", se);
+			log.error("[Error Interno]", se);
 			throw se;
 		} catch (Exception e) {
-			log.error("Exception", e);
+			log.error("[Exception]", e);
 			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
 
@@ -82,18 +82,18 @@ public class ComunService implements IComunService {
 	@Override
 	public List<MRelacional> getMRelacionalesNivel(Integer level) throws ServiceException {
 		log.info("[getMRelacionalesNivel]");
-		log.debug("level:" + level);
+		log.debug("[level:" + level +"]");
 		List<MRelacional> mRelacionales = new ArrayList<MRelacional>();
 		try {
 			mRelacionales = mRelacionalRepository.findAllByLevel(level);
-			if (level.equals(null))
+			if (level==null)
 				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
 		;
 		} catch (ServiceException se) {
-			log.error("Error Interno", se);
+			log.error("[Error Interno]", se);
 			throw se;
 		} catch (Exception e) {
-			log.error("Exception", e);
+			log.error("[Exception]", e);
 			throw new ServiceException(ErrorCode.ERROR_GENERAL, e);
 		}
 

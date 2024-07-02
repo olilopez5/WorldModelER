@@ -25,9 +25,10 @@ public class DocumentController {
 	@Autowired
 	SupuestoService servicio;
 
+	@SuppressWarnings("rawtypes")
 	@GetMapping("/pdf/{id}")
 	public ResponseEntity ver(Model model, @PathVariable("id") Long id) throws ServiceException {
-		log.info("[ver]");
+		log.info("[verPDF]");
 		Supuesto supuesto = servicio.getServicio(id);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.parseMediaType("application/pdf"));

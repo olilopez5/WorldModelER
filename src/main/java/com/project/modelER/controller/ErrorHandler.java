@@ -20,7 +20,6 @@ public class ErrorHandler {
 		public String errorGeneralHadler(Model model) {
 			log.info("[errorGeneralHadler]");
 			log.info("[ErrorMessage:" + ErrorMessage.ERROR_GENERAL + "]");
-			//
 			model.addAttribute("ErrorMessage", ErrorMessage.ERROR_GENERAL);
 			return "error";
 		}
