@@ -18,6 +18,7 @@ public class ErrorHandler {
 		@ExceptionHandler(Exception.class)
 		@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 		public String errorGeneralHadler(Model model) {
+			
 			log.info("[errorGeneralHadler]");
 			log.info("[ErrorMessage:" + ErrorMessage.ERROR_GENERAL + "]");
 			model.addAttribute("ErrorMessage", ErrorMessage.ERROR_GENERAL);

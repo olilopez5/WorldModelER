@@ -18,15 +18,15 @@ public class Solucion {
 	private Long id;
 	
 	@ManyToOne
-    @JoinColumn(name = "supuesto_id")
+    @JoinColumn(name = "cbsfid")
     private Supuesto supuesto;
 
     @ManyToOne
-    @JoinColumn(name = "modeloER_id")
+    @JoinColumn(name = "dfgagid")
     private ModeloER modeloER;
 
     @ManyToOne
-    @JoinColumn(name = "mRelacional_id")
+    @JoinColumn(name = "rgadgfid")
     private MRelacional mRelacional;
 	
 }
