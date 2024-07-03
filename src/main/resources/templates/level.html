@@ -37,9 +37,11 @@
                 <table>
                     <tr>
                         <td th:each="er : ${modelosER}">
+                        <a th:href="@{'/document/'+${er.id}}"  target="_blank">
                             <img width="70" height="70" src="https://img.icons8.com/ios/50/stacked-organizational-chart.png" alt="stacked-organizational-chart"/>
                             <br>
                             <span th:text="${er.name}"></span>
+                            </a>
                         </td>
                     </tr>
                 </table>

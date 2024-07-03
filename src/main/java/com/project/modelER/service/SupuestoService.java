@@ -14,6 +14,8 @@ public interface SupuestoService {
 
 	void deleteSupuesto(Long id)throws ServiceException;
 
-	Supuesto getServicio(Long id)throws ServiceException;
+	Supuesto getSupuesto(Long id)throws ServiceException;
+
+
 
 }

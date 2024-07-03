@@ -64,7 +64,9 @@ public class CrearController {
 		log.info("[crearModeloER]");
 
 		try {
+			
 			modeloERService.saveModeloER(modeloER, file);
+			
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

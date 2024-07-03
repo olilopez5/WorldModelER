@@ -76,9 +76,9 @@ public class SupuestoServImplement implements SupuestoService {
 
 	
 	@Override
-	public Supuesto getServicio(Long id) throws ServiceException {
-		log.info("[getServicio]");
-		log.debug("[getServicio: " + id + "]");
+	public Supuesto getSupuesto(Long id) throws ServiceException {
+		log.info("[getSupuesto]");
+		log.debug("[getSupuesto: " + id + "]");
 		try {
 			Optional<Supuesto> opSupuesto = supuestoRepository.findById(id);
 			if (!opSupuesto.isPresent()) {

@@ -1,7 +1,5 @@
 package com.project.modelER.entity;
 
-import java.util.Arrays;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +25,12 @@ public class ModeloER {
 	
 	@Lob
 	private byte[] document;
+	
+	@Column(name="namedocument")
+	private String nameDocument;
+
+	@Column(name="contenttype")
+	private String contentType;
 
 	public Long getId() {
 		return id;
@@ -60,11 +64,28 @@ public class ModeloER {
 	public void setDocument(byte[] document) {
 		this.document = document;
 	}
+	
+
+	public String getNameDocument() {
+		return nameDocument;
+	}
+
+	public void setNameDocument(String nameDocument) {
+		this.nameDocument = nameDocument;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
 
 	@Override
 	public String toString() {
-		return "ModeloER [id=" + id + ", name=" + name + ", level=" + level + ", document=" + Arrays.toString(document)
-				+ "]";
+		return "ModeloER [id=" + id + ", name=" + name + ", level=" + level + ", nameDocument=" + nameDocument
+				+ ", contentType=" + contentType + "]";
 	}
 
 
