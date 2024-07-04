@@ -88,7 +88,7 @@ public class ComunService implements IComunService {
 			mRelacionales = mRelacionalRepository.findAllByLevel(level);
 			if (level==null)
 				throw new ServiceException(ErrorCode.LEVEL_NOT_FOUND);
-		;
+		
 		} catch (ServiceException se) {
 			log.error("[Error Interno]", se);
 			throw se;

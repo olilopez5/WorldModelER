@@ -46,7 +46,7 @@ public class ModeloERServImplement implements ModeloERService {
 		log.info("[saveMRelacional]");
 		log.debug("[saveMRelacional: " + modeloER + "]");
 		try {
-			modeloER.setNameDocument(file.getName());
+			modeloER.setNameDocument(file.getOriginalFilename());
 			modeloER.setContentType(file.getContentType());
 			modeloER.setDocument(file.getBytes());
 			return modeloERRepository.save(modeloER);
@@ -84,17 +84,17 @@ public class ModeloERServImplement implements ModeloERService {
 			if (!opModeloER.isPresent()) {
 				throw new ServiceException(ErrorCode.MODELO_ER_NOT_FOUND);
 			}
-			ModeloER modelo= opModeloER.get();
-			log.debug("[modelo: " + modelo.toString() + "]");
-			return modelo;
+			ModeloER modeloER = opModeloER.get();
+			log.debug("[modelo: " + modeloER.toString() + "]");
+			return modeloER;
 
 		} catch (ServiceException se) {
 			log.error("ServiceException", se);
 			throw se;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			log.error("Exception", e);
 			throw new ServiceException(ErrorCode.ERROR_GENERAL);
 
-	}
+		}
 	}
 }

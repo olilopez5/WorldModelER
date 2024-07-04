@@ -37,7 +37,7 @@
                 <table>
                     <tr>
                         <td th:each="er : ${modelosER}">
-                        <a th:href="@{'/document/'+${er.id}}"  target="_blank">
+                        <a th:href="@{'/document/mER/'+${er.id}}"  target="_blank">
                             <img width="70" height="70" src="https://img.icons8.com/ios/50/stacked-organizational-chart.png" alt="stacked-organizational-chart"/>
                             <br>
                             <span th:text="${er.name}"></span>
@@ -56,9 +56,11 @@
                 <table>
                     <tr>
                         <td th:each="rel : ${mRelacionales}">
+                        <a th:href="@{'/document/mRel/'+${rel.id}}"  target="_blank">
                             <img width="70" height="70" src="https://img.icons8.com/material-sharp/48/static-view-level2.png" alt="static-view-level2"/>
                             <br>
                             <span th:text="${rel.name}"></span>
+                             </a>
                         </td>
                     </tr>
                 </table>

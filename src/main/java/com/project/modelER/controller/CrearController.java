@@ -41,7 +41,6 @@ public class CrearController {
 		try {
 			supuestoService.saveSupuesto(supuesto, file);
 		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

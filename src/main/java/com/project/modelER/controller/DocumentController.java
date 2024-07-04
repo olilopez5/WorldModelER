@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.modelER.entity.MRelacional;
 import com.project.modelER.entity.ModeloER;
 import com.project.modelER.entity.Supuesto;
+import com.project.modelER.service.MRelacionalService;
 import com.project.modelER.service.ModeloERService;
 import com.project.modelER.service.SupuestoService;
 import com.project.modelER.service.exception.ServiceException;
@@ -25,15 +27,17 @@ public class DocumentController {
 	public static final Logger log = LoggerFactory.getLogger(DocumentController.class);
 
 	@Autowired
-	SupuestoService servicio;
+	SupuestoService service;
 	@Autowired
-	ModeloERService MERservicio;
+	ModeloERService modeloService;
+	@Autowired
+	MRelacionalService relacionalService;
 
 	@SuppressWarnings("rawtypes")
 	@GetMapping("/pdf/{id}")
-	public ResponseEntity verPdf(Model model, @PathVariable("id") Long id) throws ServiceException {
-		log.info("[verPDF]");
-		Supuesto supuesto = servicio.getSupuesto(id);
+	public ResponseEntity verSupuesto(Model model, @PathVariable("id") Long id) throws ServiceException {
+		log.info("[verSupuesto]");
+		Supuesto supuesto = service.getSupuesto(id);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.parseMediaType("application/pdf"));
 
@@ -43,16 +47,32 @@ public class DocumentController {
 
 	}
 
+
+	
 	@SuppressWarnings("rawtypes")
-	@GetMapping("/{id}")
-	public ResponseEntity verImagen(Model model, @PathVariable("id") Long id) throws ServiceException {
-		log.info("[verImagen]");
-		ModeloER modeloER = MERservicio.getModeloER(id);
+	@GetMapping("/mER/{id}")
+	public ResponseEntity verModeloER(Model model, @PathVariable("id") Long id) throws ServiceException {
+		log.info("[verModeloER]");
+		ModeloER modeloER = modeloService.getModeloER(id);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.valueOf(modeloER.getContentType()));
 		headers.add("Content-Disposition", "filename=" + modeloER.getNameDocument());
 
 		byte[] document = modeloER.getDocument();
+
+		return new ResponseEntity<>(document, headers, HttpStatus.OK);
+
+	}
+	@SuppressWarnings("rawtypes")
+	@GetMapping("/mRel/{id}")
+	public ResponseEntity verMRelacional(Model model, @PathVariable("id") Long id) throws ServiceException {
+		log.info("[verModeloER]");
+		MRelacional mRelacional = relacionalService.getMRelacional(id);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.valueOf(mRelacional.getContentType()));
+		headers.add("Content-Disposition", "filename=" + mRelacional.getNameDocument());
+
+		byte[] document = mRelacional.getDocument();
 
 		return new ResponseEntity<>(document, headers, HttpStatus.OK);
 

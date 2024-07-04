@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class ModeloER {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column
@@ -31,6 +31,7 @@ public class ModeloER {
 
 	@Column(name="contenttype")
 	private String contentType;
+	
 
 	public Long getId() {
 		return id;

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.modelER.entity.MRelacional;
+import com.project.modelER.entity.ModeloER;
 import com.project.modelER.service.exception.ServiceException;
 
 public interface MRelacionalService {
@@ -16,5 +17,5 @@ public interface MRelacionalService {
 
 	void deleteMRelacional(Long id) throws ServiceException;
 	
-	//MRelacional getImage(Long id)throws ServiceException;
+	MRelacional getMRelacional(Long id)throws ServiceException;
 }

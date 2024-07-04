@@ -1,7 +1,5 @@
 package com.project.modelER.entity;
 
-import java.util.Arrays;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +13,7 @@ import jakarta.persistence.Table;
 
 public class MRelacional {
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column
@@ -26,6 +24,12 @@ public class MRelacional {
 	
 	@Lob
 	private byte[] document;
+	
+	@Column(name="namedocument")
+	private String nameDocument;
+
+	@Column(name="contenttype")
+	private String contentType;
 
 	public Long getId() {
 		return id;
@@ -59,10 +63,28 @@ public class MRelacional {
 		this.document = document;
 	}
 
+	public String getNameDocument() {
+		return nameDocument;
+	}
+
+	public void setNameDocument(String nameDocument) {
+		this.nameDocument = nameDocument;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
 	@Override
 	public String toString() {
-		return "MRelacional [id=" + id + ", name=" + name + ", level=" + level + ", document="
-				+ Arrays.toString(document) + "]";
+		return "MRelacional [id=" + id + ", name=" + name + ", level=" + level + ", nameDocument=" + nameDocument
+				+ ", contentType=" + contentType + "]";
 	}
+
+	
 
 }

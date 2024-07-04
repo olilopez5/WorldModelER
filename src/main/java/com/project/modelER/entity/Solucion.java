@@ -17,16 +17,4 @@ public class Solucion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
-    @JoinColumn(name = "cbsfid")
-    private Supuesto supuesto;
-
-    @ManyToOne
-    @JoinColumn(name = "dfgagid")
-    private ModeloER modeloER;
-
-    @ManyToOne
-    @JoinColumn(name = "rgadgfid")
-    private MRelacional mRelacional;
-	
 }
